@@ -1,0 +1,34 @@
+{
+  "name": "data_service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node -r esm index.js",
+    "dev": "nodemon -r esm index.js",
+    "knex": "knex $*",
+    "makemigrations": "node -r esm manage.js makemigrations",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Spectrum One",
+  "license": "ISC",
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "chai": "^4.3.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-graphql": "^0.12.0",
+    "gql-merge": "0.0.6",
+    "graphql": "^15.5.0",
+    "graphql-import": "^1.0.2",
+    "graphql-tools": "^7.0.4",
+    "knex": "^0.21.18",
+    "mocha": "^8.3.0",
+    "objection": "^2.2.14",
+    "pg": "^8.5.1"
+  },
+  "devDependencies": {
+    "esm": "^3.2.25",
+    "nodemon": "^2.0.7"
+  }
+}
