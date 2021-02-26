@@ -13,7 +13,7 @@
     "migrate:down": "node -r esm manage.js down",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Spectrum One",
+  "author": "Ray Lawrence Henri Sison",
   "license": "ISC",
   "dependencies": {
     "babel-runtime": "^6.26.0",
