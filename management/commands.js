@@ -1,4 +1,5 @@
 import { knexClient } from '../loaders/database/client';
+
 import { settings } from '../settings';
 
 
@@ -9,7 +10,7 @@ const validateModule = moduleName => {
   }
 }
 
-const makemigrations = (...options) => {
+const makemigrations = async (...options) => {
   const [moduleName, migrationName, ...extras] = options;
   validateModule(moduleName);
   knexClient.migrate.make(migrationName, {
@@ -17,11 +18,12 @@ const makemigrations = (...options) => {
   });
 }
 
-const migrate = (...options) => {
-  const [moduleName, migrationName, ...extras] = options;
+const migrate = async (...options) => {
+  const [moduleName, ...extras] = options;
   validateModule(moduleName);
   knexClient.migrate.latest({
-    directory: `./src/${moduleName}/migrations/`
+    directory: `./src/${moduleName}/migrations/`,
+    disableMigrationsListValidation: true,
   });
 }
 
