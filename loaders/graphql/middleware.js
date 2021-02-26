@@ -2,7 +2,7 @@ import { graphqlHTTP } from 'express-graphql';
 import { buildSchema } from 'graphql';
 import { mergeStrings } from 'gql-merge'
 
-import { modules } from '../../graphql-modules';
+import { modules } from '../../src/graphql-modules';
 
 const schema = buildSchema(mergeStrings(modules.schemas));
 const resolvers = modules.resolvers.reduce((accumulator, resolver) => {
