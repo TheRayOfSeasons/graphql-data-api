@@ -20,7 +20,7 @@ const makemigrations = (...options) => {
 const migrate = (...options) => {
   const [moduleName, migrationName, ...extras] = options;
   validateModule(moduleName);
-  knexClient.migrate.latest(migrationName, {
+  knexClient.migrate.latest({
     directory: `./src/${moduleName}/migrations/`
   });
 }
