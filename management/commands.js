@@ -20,9 +20,17 @@ const makemigrations = async (...options) => {
 
 const migrate = async (...options) => {
   const [moduleName, ...extras] = options;
-  validateModule(moduleName);
+  let directory;
+  const createDirectory = module => `./src/${module}/migrations/`;
+  if(moduleName) {
+    validateModule(moduleName);
+    directory = createDirectory(moduleName);
+  }
+  else {
+    directory = settings.INSTALLED_MODULES.map(module => createDirectory(module));
+  }
   knexClient.migrate.latest({
-    directory: `./src/${moduleName}/migrations/`,
+    directory,
     disableMigrationsListValidation: true,
   });
 }
