@@ -9,6 +9,8 @@
     "knex": "knex $*",
     "makemigrations": "node -r esm manage.js makemigrations",
     "migrate": "node -r esm manage.js migrate",
+    "migrate:up": "node -r esm manage.js up",
+    "migrate:down": "node -r esm manage.js down",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Spectrum One",
@@ -24,6 +26,7 @@
     "graphql-import": "^1.0.2",
     "graphql-tools": "^7.0.4",
     "knex": "^0.21.18",
+    "knex-migrate": "^1.7.4",
     "mocha": "^8.3.0",
     "objection": "^2.2.14",
     "pg": "^8.5.1"

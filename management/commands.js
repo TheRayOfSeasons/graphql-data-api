@@ -10,6 +10,8 @@ const validateModule = moduleName => {
   }
 }
 
+const createModuleMigrationPath = module => `./src/${module}/migrations/`;
+
 const makemigrations = async (...options) => {
   const [moduleName, migrationName, ...extras] = options;
   validateModule(moduleName);
@@ -21,13 +23,12 @@ const makemigrations = async (...options) => {
 const migrate = async (...options) => {
   const [moduleName, ...extras] = options;
   let directory;
-  const createDirectory = module => `./src/${module}/migrations/`;
   if(moduleName) {
     validateModule(moduleName);
-    directory = createDirectory(moduleName);
+    directory = createModuleMigrationPath(moduleName);
   }
   else {
-    directory = settings.INSTALLED_MODULES.map(module => createDirectory(module));
+    directory = settings.INSTALLED_MODULES.map(module => createModuleMigrationPath(module));
   }
   knexClient.migrate.latest({
     directory,
@@ -35,7 +36,33 @@ const migrate = async (...options) => {
   });
 }
 
+const up = async (...options) => {
+  const [moduleName, ...extras] = options;
+  const directory = settings.INSTALLED_MODULES.map(module => createModuleMigrationPath(module));
+  const config = {
+    directory,
+    disableMigrationsListValidation: true,
+  }
+  if(moduleName)
+    config.name = moduleName;
+  knexClient.migrate.up(config);
+}
+
+const down = async (...options) => {
+  const [moduleName, ...extras] = options;
+  const directory = settings.INSTALLED_MODULES.map(module => createModuleMigrationPath(module));
+  const config = {
+    directory,
+    disableMigrationsListValidation: true,
+  }
+  if(moduleName)
+    config.name = moduleName;
+  knexClient.migrate.down(config);
+}
+
 export const commands = {
   makemigrations,
-  migrate
+  migrate,
+  up,
+  down,
 }
