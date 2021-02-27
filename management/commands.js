@@ -60,9 +60,19 @@ const down = async (...options) => {
   return knexClient.migrate.down(config);
 }
 
+const rollback = async (...options) => {
+  const directory = settings.INSTALLED_MODULES.map(module => createModuleMigrationPath(module));
+  const config = {
+    directory,
+    disableMigrationsListValidation: true,
+  };
+  return knexClient.migrate.rollback(config);
+}
+
 export const commands = {
   makemigrations,
   migrate,
   up,
   down,
+  rollback,
 }

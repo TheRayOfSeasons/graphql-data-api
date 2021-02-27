@@ -11,6 +11,7 @@
     "migrate": "node -r esm manage.js migrate",
     "migrate:up": "node -r esm manage.js up",
     "migrate:down": "node -r esm manage.js down",
+    "migrate:rollback": "node -r esm manage.js rollback",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ray Lawrence Henri Sison",
