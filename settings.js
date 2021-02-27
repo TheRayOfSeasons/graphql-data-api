@@ -4,8 +4,8 @@ dotenv.config();
 
 export const settings = {
   INSTALLED_MODULES: [
-    'attendance',
-    'incidents'
+    'collections',
+    'persons'
   ],
   DATABASE: {
     client: process.env.DATABASE_ENGINE || 'postgres',

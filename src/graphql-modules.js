@@ -1,15 +1,15 @@
 import { importSchema } from 'graphql-import';
 
-import { AttendanceResolvers } from './attendance/resolvers';
-import { IncidentResolvers } from './incidents/resolvers';
+import { CollectionResolvers } from './collections/resolvers';
+import { PersonResolvers } from './persons/resolvers';
 
 export const modules = {
   resolvers: [
-    AttendanceResolvers,
-    IncidentResolvers,
+    CollectionResolvers,
+    PersonResolvers,
   ],
   schemas: [
-    importSchema('./src/attendance/schema.graphql'),
-    importSchema('./src/incidents/schema.graphql'),
+    importSchema('./src/collections/schema.graphql'),
+    importSchema('./src/persons/schema.graphql'),
   ]
 }

@@ -1,5 +1,5 @@
 import GetTimeRecord from './controllers/GetTimeRecord';
 
-export const AttendanceResolvers = {
+export const PersonResolvers = {
   hello: GetTimeRecord,
 }
