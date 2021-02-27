@@ -15,7 +15,7 @@ const createModuleMigrationPath = module => `./src/${module}/migrations/`;
 const makemigrations = async (...options) => {
   const [moduleName, migrationName, ...extras] = options;
   validateModule(moduleName);
-  knexClient.migrate.make(migrationName, {
+  return knexClient.migrate.make(migrationName, {
     directory: `./src/${moduleName}/migrations/`
   });
 }
@@ -30,7 +30,7 @@ const migrate = async (...options) => {
   else {
     directory = settings.INSTALLED_MODULES.map(module => createModuleMigrationPath(module));
   }
-  knexClient.migrate.latest({
+  return knexClient.migrate.latest({
     directory,
     disableMigrationsListValidation: true,
   });
@@ -45,7 +45,7 @@ const up = async (...options) => {
   }
   if(moduleName)
     config.name = moduleName;
-  knexClient.migrate.up(config);
+  return knexClient.migrate.up(config);
 }
 
 const down = async (...options) => {
@@ -57,7 +57,7 @@ const down = async (...options) => {
   }
   if(moduleName)
     config.name = moduleName;
-  knexClient.migrate.down(config);
+  return knexClient.migrate.down(config);
 }
 
 export const commands = {
