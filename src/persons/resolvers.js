@@ -1,5 +1,7 @@
-import GetTimeRecord from './controllers/GetTimeRecord';
+import { GetPerson } from './controllers/GetPerson';
+import { GetPersons } from './controllers/GetPersons';
 
 export const PersonResolvers = {
-  hello: GetTimeRecord,
+  person: GetPerson,
+  persons: GetPersons,
 }

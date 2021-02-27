@@ -1,3 +1,12 @@
+scalar Date
+
+type Person {
+  name: String!
+  age: Int!
+  birthday: Date!
+}
+
 type Query {
-  hello: String
+  person(id: Int!): Person
+  persons: [Person]
 }
