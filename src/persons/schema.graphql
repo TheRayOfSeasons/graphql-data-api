@@ -9,4 +9,9 @@ type Person {
 type Query {
   person(id: Int!): Person
   persons: [Person]
+  greet: String!
+}
+
+type Mutation {
+  createPerson(name: String, age: Int, birthday: Date): Person
 }
